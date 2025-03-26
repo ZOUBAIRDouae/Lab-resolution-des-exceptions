@@ -3,23 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Article Submission</title>
 </head>
 <body>
-    <!-- Mauvais exemple : méthode GET utilisée alors que la route attend POST -->
-<form action="{{ route('articles.store') }}" method="GET">
-    @csrf
-    <div>
-        <label for="title">Titre :</label>
-        <input type="text" name="title" id="title">
-    </div>
-    <div>
-        <label for="content">Contenu :</label>
-        <textarea name="content" id="content"></textarea>
-    </div>
-    <button type="submit">Envoyer</button>
-</form>
-
+    <form action="{{ route('articles.store') }}" method="POST">
+        @csrf
+        <div>
+            <label for="title">Titre :</label>
+            <input type="text" name="title" id="title" required>
+        </div>
+        <div>
+            <label for="content">Contenu :</label>
+            <textarea name="content" id="content" required></textarea>
+        </div>
+        <button type="submit">Envoyer</button>
+    </form>
 </body>
 </html>
