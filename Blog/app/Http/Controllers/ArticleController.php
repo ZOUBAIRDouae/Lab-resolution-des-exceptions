@@ -31,20 +31,19 @@ class ArticleController extends Controller
     // Stocke un nouvel article en base de données
     public function store(Request $request)
     {
-        // Validation des données du formulaire
-        $validated = $request->validate([
-            'title'   => 'required|string|max:255',
+        $request->validate([
+            'title' => 'required|string|max:255',
             'content' => 'required|string',
         ]);
-
-        // Création d'un slug à partir du titre
-        $validated['slug'] = Str::slug($validated['title']);
-
-        // Création de l'article
-        Article::create($validated);
-
-        return redirect()->route('articles.index')->with('success', 'Article créé avec succès.');
+    
+        Article::create([
+            'title' => $request->title,
+            'content' => $request->content,
+        ]);
+    
+        return redirect()->route('articles.index')->with('success', 'Article créé avec succès !');
     }
+    
 
     // Affiche le formulaire d'édition d'un article existant
     public function edit($id)

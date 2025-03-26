@@ -7,19 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- Mauvais exemple : méthode GET utilisée alors que la route attend POST -->
-<form action="{{ route('articles.store') }}" method="GET">
-    @csrf
-    <div>
-        <label for="title">Titre :</label>
-        <input type="text" name="title" id="title">
-    </div>
-    <div>
-        <label for="content">Contenu :</label>
-        <textarea name="content" id="content"></textarea>
-    </div>
-    <button type="submit">Envoyer</button>
-</form>
-
+    <form action="{{ route('articles.store') }}" method="POST">
+        @csrf
+        <div>
+            <label for="title">Titre :</label>
+            <input type="text" name="title" id="title">
+        </div>
+        <div>
+            <label for="content">Contenu :</label>
+            <textarea name="content" id="content"></textarea>
+        </div>
+        <button type="submit">Envoyer</button>
+    </form>
+    
 </body>
 </html>
